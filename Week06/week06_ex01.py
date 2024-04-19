@@ -1,4 +1,4 @@
-#This script implements a 3D vector class.
+# This script implements a 3D vector class.
 
 import math
 
@@ -11,11 +11,11 @@ class Vector:
         self.z = z
 
     def __repr__(self):  # return string "Vector(x, y, z)"
-        return f"Vector({self.x}, {self.y}, {self.z})"
+        return f"Vector({self.x:.3g}, {self.y:.3g}, {self.z:.3g})"
 
     def __eq__(self, other):  # v == w (we need to compare x, y, z, not objects)
         return (self.x == other.x) and (self.y == other.y) and (
-                    self.z == other.z)
+                self.z == other.z)
 
     def __ne__(self, other):  # v != w
         return not self == other
@@ -40,6 +40,11 @@ class Vector:
     def __hash__(self):  # we assume that vectors are immutable
         return hash((self.x, self.y, self.z))  # recommended
 
+    def __truediv__(self, number):
+        if not isinstance(number, (int, float)):
+            raise TypeError("Division possible only for numbers!")
+        return Vector(self.x / number, self.y / number, self.z / number)
+
 
 # Exemplary tests. Change values in your tests.
 import math
@@ -54,5 +59,6 @@ assert v.cross(w) == Vector(30, -16, 22)
 assert v.length() == 6
 S = set([v, v, w])
 assert len(S) == 2
+assert v/2 == Vector(2, 1, -2)
 
-print("Tests passed")
+#print("Tests passed")
