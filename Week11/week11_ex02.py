@@ -20,8 +20,9 @@ u = np.empty( (Nx+1,Nt+1), dtype=float )  # all results
 
 # initial condition, t=0, j=0
 # initial shape of the string
-# half of the string is at maximal displacement
-u[:,0] = np.where(x < L/2, 1, 0)
+# combination of three different sinusoids
+u[:,0] = (np.sin(np.pi * x) + (1/2) * np.sin(2 * np.pi * x)
+          + (1/4) * np.sin(4 * np.pi * x))
 
 u[0,0] = 0.0
 u[Nx,0] = 0.0

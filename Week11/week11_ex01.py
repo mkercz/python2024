@@ -16,6 +16,7 @@ assert r < 0.5
 u = np.empty( (Nx+1,Nt+1), dtype=float )  # macierz na wszystkie wyniki
 
 # initial condition, t=0
+u[:,0] = 0.0
 u[8:13,0] = 1.0
 u[18:23,0] = 1.0
 u[28:33,0] = 1.0
